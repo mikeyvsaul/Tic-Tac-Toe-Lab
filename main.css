@@ -4,13 +4,10 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-header {
+    display: flex;
     justify-content: center;
+    text-align: center;
+    height: 100vh;
 }
 
 .board {
@@ -22,10 +19,10 @@ header {
 }
 
 .box {
-  background: rgb(250, 250, 250, 1);
-  border: 10px solid #555;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #AAA;
+    background: rgb(250, 250, 250, 1);
+    border: 10px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
 }

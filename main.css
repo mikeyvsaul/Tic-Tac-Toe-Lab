@@ -10,12 +10,28 @@ body {
     height: 100vh;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+   display: inline;
+   padding: 100px;
+   font-size: 20px;
+}
+
+
+/* Used a codepen to help start with creation of board 
+https://codepen.io/chrisoncode/pen/bYmpxw */
+
 .board {
     display: grid;
-    margin: 0;
+    margin: 10px;
     border: 10px solid #555;
-    grid-template-rows: 200px 200px 200px;
-    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 200px);
 }
 
 .box {

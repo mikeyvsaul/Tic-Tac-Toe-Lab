@@ -41,4 +41,13 @@ https://codepen.io/chrisoncode/pen/bYmpxw */
   align-items: center;
   justify-content: center;
   color: black;
+  font-size: 20vmax;
+}
+
+button {
+  background-color: green;
+  color: white;
+  display: inline-block;
+  font-size: 15px;
+  padding: 15px 30px;
 }

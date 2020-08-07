@@ -1,8 +1,8 @@
 /*----- constants -----*/
 const actions = {
-  '1' :  'red',
-  '-1' : 'blue',
-  null : 'white' 
+  '1' :  '<p style="color:red;">X</p>',
+  '-1' : '<p style="color:blue;">O</p>',
+  null : '' 
 };
 
 const winningCombos = [
@@ -33,14 +33,28 @@ document.querySelector('button').addEventListener('click', init);
 
 init();
 
-function clickSquare() {
-  console.log('test');
-}
+function clickSquare(evt) {
+  const idx = parseInt(evt.target.id.replace('box', ''));
+  if (boardArr[idx]) return;
+  if (winner !== null) return;
+  boardArr[idx] = turn;
+  turn *= -1;
+  render();
+};
+
+function findWinner() {
+  for(i = 0; i < winningCombos.length; i++) {
+    
+  }
+};
 
 function render() {
   boardArr.forEach((square, idx) => {
-    squares[idx].style.background = actions[square];
+    squares[idx].innerHTML = actions[square];
   });
+  if (winner !== null) {
+    playerX.innerHTML = `Player ${action[turn]}'s Turn`;
+  }
 };
 
 function init() {

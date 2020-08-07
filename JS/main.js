@@ -22,8 +22,7 @@ let winner;
 
 /*----- cached element references -----*/
 let squares = document.querySelectorAll('.box');
-let playerX = document.getElementById('msg1');
-let playerO = document.getElementById('msg2');
+let gameMsg = document.querySelector('#message');
 
 /*----- event listeners -----*/
 document.querySelector('.board').addEventListener('click', clickSquare);
@@ -39,21 +38,35 @@ function clickSquare(evt) {
   if (winner !== null) return;
   boardArr[idx] = turn;
   turn *= -1;
+  winner = findWinner();
   render();
 };
 
 function findWinner() {
-  for(i = 0; i < winningCombos.length; i++) {
-    
+  for (i = 0; i < winningCombos.length; i++) {
+    if (Math.abs(boardArr[0] + boardArr[1] + boardArr[2]) === 3) return boardArr[0];
+    if (Math.abs(boardArr[3] + boardArr[4] + boardArr[5]) === 3) return boardArr[3];
+    if (Math.abs(boardArr[6] + boardArr[7] + boardArr[8]) === 3) return boardArr[6];
+    if (Math.abs(boardArr[0] + boardArr[3] + boardArr[6]) === 3) return boardArr[0];
+    if (Math.abs(boardArr[1] + boardArr[4] + boardArr[7]) === 3) return boardArr[1];
+    if (Math.abs(boardArr[2] + boardArr[5] + boardArr[8]) === 3) return boardArr[2];
+    if (Math.abs(boardArr[0] + boardArr[4] + boardArr[8]) === 3) return boardArr[0];
+    if (Math.abs(boardArr[2] + boardArr[4] + boardArr[6]) === 3) return boardArr[2];
   }
+  if (boardArr.includes(null)) return null;
+  return 'T';
 };
 
 function render() {
   boardArr.forEach((square, idx) => {
     squares[idx].innerHTML = actions[square];
   });
-  if (winner !== null) {
-    playerX.innerHTML = `Player ${action[turn]}'s Turn`;
+  if (winner === 'T') {
+    gameMsg.innerHTML = `No winners this time! Try again!`;
+  } else if (winner) {
+    gameMsg.innerHTML = `Player ${actions[winner]} wins!`;
+  } else {
+    gameMsg.innerHTML = `Player ${actions[turn]} Turn`;
   }
 };
 
